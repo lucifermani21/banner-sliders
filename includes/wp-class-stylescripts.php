@@ -28,8 +28,8 @@ class STYLESCRIPTS {
     }
 
     public function wp_sbs_script_style_admin(): void{
-        $file_url = WP_SBS_EDITING__URL;
-        $file_dir = WP_SBS_EDITING__DIR;
+        $file_url = MS_SBS_EDITING__URL;
+        $file_dir = MS_SBS_EDITING__DIR;
         $current_page = get_current_screen();
         if( $current_page->base === 'wp_faqs_page_wp-custom-setting' ){
             foreach( $this->admin_style as $key => $value ) {
@@ -47,8 +47,8 @@ class STYLESCRIPTS {
     }
 
     public function wp_sbs_script_style_frontend(): void {
-        $file_url = WP_SBS_EDITING__URL;
-        $file_dir = WP_SBS_EDITING__URL;
+        $file_url = MS_SBS_EDITING__URL;
+        $file_dir = MS_SBS_EDITING__DIR;
         foreach( $this->frontend_style as $key => $value ) {
             $version = ( $value[2] != null ) ? $value[2] : filemtime( $file_dir.$value[0] ); 
             wp_register_style( $key, $file_url.$value[0], $value[1], $version );

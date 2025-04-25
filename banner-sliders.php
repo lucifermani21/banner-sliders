@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
      die;
 }
 define( 'MS_SBS_VERSION', '1.0.0' );
-define( 'MS_SBS_TEXT_DOMAIN', 'ms-SBSmonial' );
+define( 'MS_SBS_TEXT_DOMAIN', 'ms-banner-slider' );
 define( 'MS_SBS_DIR__NAME', dirname( __FILE__ ) );
 define( 'MS_SBS_EDITING__URL', plugin_dir_url( __FILE__ ) );
 define( 'MS_SBS_EDITING__DIR', plugin_dir_path( __FILE__ ) );
