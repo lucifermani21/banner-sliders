@@ -31,24 +31,24 @@ class METABOX{
 
     public function ms_rendar_banner_slider_fucntion( $post ) {
 		echo '<table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse;">
-    <thead>
-        <tr>
-            <th>Image</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><img src="path/to/image.jpg" alt="Sample Image" style="width: 100px; height: auto;"></td>
-            <td>Sample Title</td>
-            <td>Sample description goes here.</td>
-            <td><button type="button">Edit</button> <button type="button">Delete</button></td>
-        </tr>
-        <!-- Add more rows as needed -->
-    </tbody>
-</table>';
+			<thead>
+				<tr>
+					<th>Image</th>
+					<th>Title</th>
+					<th>Description</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><img src="path/to/image.jpg" alt="Sample Image" style="width: 100px; height: auto;"></td>
+					<td>Sample Title</td>
+					<td>Sample description goes here.</td>
+					<td><button type="button">Edit</button> <button type="button">Delete</button></td>
+				</tr>
+				<!-- Add more rows as needed -->
+			</tbody>
+		</table>';
 	}
 
     public function ms_save_metabox( $post_id, $post ) {

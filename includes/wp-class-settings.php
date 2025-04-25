@@ -9,7 +9,7 @@ class SETTINGS {
     /**
      * @var string
      */
-    private string $setting_page_name = 'Banner Setting';
+    private string $setting_page_name = 'Banner Settings';
 
     /**
      * @var string
@@ -21,11 +21,13 @@ class SETTINGS {
             [ 'section_title' => 'Display Banner section:',
                 'section_fields' => array(
                     [
-                        'field_name' 		=> 'Backgroud Color',
-                        'field_id' 			=> 'tab_bg_clr',
-                        'field_type' 		=> 'color',
-                        'field_desc' 		=> 'Here you can add accodion background color.',
+                        'field_name' 		=> 'Selct Pages or Post Types where you want to display slider:',
+                        'field_id' 			=> 'slider_post_type',
+                        'field_type' 		=> 'checkbox',
+                        'field_options' 	=> 'Page|Post',
+                        'field_desc' 		=> 'Selct Pages or Post Types where you want to display slider.',
                         'field_placeholder'	=> '',
+                        'field_style'	    => '',
                     ],
                 ),
             ],
@@ -33,18 +35,30 @@ class SETTINGS {
             [ 'section_title' => 'Banner Slider:',
                 'section_fields' => array(
                     [
-                        'field_name' 		=> 'Heading Size',
-                        'field_id' 			=> 'head_size',
-                        'field_type' 		=> 'number',
-                        'field_desc' 		=> 'Here you can select accodion background color.',
-                        'field_placeholder'	=> '',
+                        'field_name' 		=> 'Banner Image Height',
+                        'field_id' 			=> 'slider_height',
+                        'field_type' 		=> 'text',
+                        'field_desc' 		=> 'Here you can set the height of the slider.',
+                        'field_placeholder'	=> '600',
+                        'field_style'	    => '',
                     ],
                     [
-                        'field_name' 		=> 'Content Size',
-                        'field_id' 			=> 'body_size',
-                        'field_type' 		=> 'number',
-                        'field_desc' 		=> 'Here you can add accodion tab text color.',
+                        'field_name' 		=> 'Show Arrows',
+                        'field_id' 			=> 'show_arrows',
+                        'field_type' 		=> 'radio',
+                        'field_options' 	=> 'Yes|No',
+                        'field_desc' 		=> 'Here you can select the show arrows or not.',
                         'field_placeholder'	=> '',
+                        'field_style'	    => '',
+                    ],
+                    [
+                        'field_name' 		=> 'Show Dots',
+                        'field_id' 			=> 'show_dost',
+                        'field_type' 		=> 'radio',
+                        'field_options' 	=> 'Yes|No',
+                        'field_desc' 		=> 'Here you can select the show dots or not.',
+                        'field_placeholder'	=> '',
+                        'field_style'	    => '',
                     ],
                 ),
             ],

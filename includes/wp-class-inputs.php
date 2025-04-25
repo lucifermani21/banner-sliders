@@ -181,7 +181,7 @@ class INPUTS {
         $input_style = $input_style != '' ? $input_style : '';
         $html = '';
         foreach( $input_options as $checkbox_option ):
-        $html .= '<input type="'.$input_type.'" id="'.$input_id.'" name="'.$input_id.'[]" value="'.trim( $checkbox_option, ' ' ).'" '.( in_array( $checkbox_option, $input_value ) ? 'checked' : '' ).' class="'.$input_class.'" style="'.$input_style.'" >';
+        $html .= '<input type="'.$input_type.'" id="'.$input_id.'" name="'.$input_id.'[]" value="'.trim( $checkbox_option, ' ' ).'" '.( in_array( $checkbox_option, (array)$input_value ) ? 'checked' : '' ).' class="'.$input_class.'" style="'.$input_style.'" >';
         $html .= '<label for="'.$input_id.'">'.trim( $checkbox_option, ' ' ).'</label><br>';
         endforeach;
         echo $html;
