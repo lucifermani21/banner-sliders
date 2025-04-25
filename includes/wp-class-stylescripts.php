@@ -5,12 +5,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class STYLESCRIPTS {
+    
     private array $admin_style = array(
-        'backend-sbs-plugin-style' => array( 'assets/backend/css/backend-style.css', array(), '0.01' ),
+        'backend-sbs-plugin-style' => array( 'assets/backend/css/backend-style.css', array(), null ),
     );
 
     private array $admin_script = array(
-        'backend-sbs-plugin-script' => array( 'assets/backend/js/backend-script.js', array( 'jquery' ), '0.01' ),
+        'backend-sbs-plugin-script' => array( 'assets/backend/js/backend-script.js', array( 'jquery' ), null ),
     );
 
     private array $frontend_style = array(
