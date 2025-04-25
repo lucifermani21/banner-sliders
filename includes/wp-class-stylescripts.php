@@ -6,20 +6,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class STYLESCRIPTS {
     private array $admin_style = array(
-        'backend-style' => array( 'assets/backend/css/backend-style.css', array(), '0.01' ),
+        'backend-sbs-plugin-style' => array( 'assets/backend/css/backend-style.css', array(), '0.01' ),
     );
 
     private array $admin_script = array(
-        'backend-script' => array( 'assets/backend/js/backend-script.js', array( 'jquery' ), '0.01' ),
+        'backend-sbs-plugin-script' => array( 'assets/backend/js/backend-script.js', array( 'jquery' ), '0.01' ),
     );
 
     private array $frontend_style = array(
-        'frontend-style' => array( 'assets/frontend/css/frontend-style.css', array(), '0.01' ),
-        'frontend-custom-style' => array( 'assets/frontend/css/frontend-custom-style.css', array(), null ),
+        'frontend-sbs-plugin-style' => array( 'assets/frontend/css/frontend-style.css', array(), '0.01' ),
+        'frontend-sbs-plugin-custom-style' => array( 'assets/frontend/css/frontend-custom-style.css', array(), null ),
     );
 
     private array $frontend_script = array(
-        'frontend-script' => array( 'assets/frontend/js/frontend-script.js', array( 'jquery' ), null ),
+        'frontend-sbs-plugin-script' => array( 'assets/frontend/js/frontend-script.js', array( 'jquery' ), null ),
     );
 
     public function __construct() {
@@ -31,7 +31,7 @@ class STYLESCRIPTS {
         $file_url = MS_SBS_EDITING__URL;
         $file_dir = MS_SBS_EDITING__DIR;
         $current_page = get_current_screen();
-        if( $current_page->base === 'wp_faqs_page_wp-custom-setting' ){
+        if( $current_page->base != '' ){
             foreach( $this->admin_style as $key => $value ) {
                 $version = ( $value[2] != null ) ? $value[2] : filemtime( $file_dir.$value[0] ); 
                 wp_register_style( $key, $file_url.$value[0], $value[1], $version );

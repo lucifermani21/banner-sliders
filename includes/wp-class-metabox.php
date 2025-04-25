@@ -70,9 +70,9 @@ class METABOX{
 				<tr>
 					<?php foreach( $this->meta_fields_array as $k => $vlaue ):
 					get_post_meta( $post->ID, $vlaue['field_id'], true );?>
-					<td><input type="<?php echo $vlaue['field_type'];?>" id="<?php echo $vlaue['field_id'];?>" name="team_<?php echo $vlaue['field_id'];?>" value="<?php echo ( get_post_meta( $post->ID, 'team_'.$vlaue['field_id'], true ) ) != '' ? get_post_meta( $post->ID, 'team_'.$vlaue['field_id'], true ) : '';?>" placeholder="<?php echo $vlaue['placeholder'];?>" style="width: 100%;"></td>
+					<td><input type="<?php echo $vlaue['field_type'];?>" id="<?php echo $vlaue['field_id'];?>" name="<?php echo $vlaue['field_id'];?>" value="<?php echo ( get_post_meta( $post->ID, $vlaue['field_id'], true ) ) != '' ? get_post_meta( $post->ID, $vlaue['field_id'], true ) : '';?>" placeholder="<?php echo $vlaue['placeholder'];?>" style="width: 100%;"></td>
 					<?php endforeach;?>
-					
+
 					<td style="text-align:center"><button type="remove_button"><span class="dashicons dashicons-trash"></span> Remove</button></td>
 				</tr>				
 			</tbody>
