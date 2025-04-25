@@ -6,6 +6,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class METABOX{
 
+	public $meta_fields_array = array(
+        [
+            'field_name' => 'Banner Image',
+            'field_type' => 'file',
+            'field_id' => 'slider_banner_image',
+            'desc' => 'Add your Banner Image.',
+            'placeholder' => ''
+        ],
+        [
+            'field_name' => 'Banner Title',
+            'field_type' => 'test',
+            'field_id' => 'slider_banner_title',
+            'desc' => 'Add your Banner Title.',
+            'placeholder' => 'Banner Title'
+        ],
+        [
+            'field_name' => 'Banner Description',
+            'field_type' => 'textarea',
+            'field_id' => 'slider_banner_desc',
+            'desc' => 'Add your Banner Description.',
+            'placeholder' => 'add your Banner Description'
+        ],
+    );
+
     public function __construct(){
         if ( is_admin() ) {
 			add_action( 'load-post.php',     array( $this, 'ms_init_metabox' ) );
@@ -30,10 +54,13 @@ class METABOX{
 	}
 
     public function ms_rendar_banner_slider_fucntion( $post ) {
-		echo '<table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse;">
+		
+		$meta_fields_array = $this->meta_fields_array;
+		?>
+		<table border="1" cellpadding="10" cellspacing="0" style="width: 100%; border-collapse: collapse;">
 			<thead>
 				<tr>
-					<th>Image</th>
+					<th>Banner Image</th>
 					<th>Title</th>
 					<th>Description</th>
 					<th>Action</th>
@@ -41,14 +68,17 @@ class METABOX{
 			</thead>
 			<tbody>
 				<tr>
-					<td><img src="path/to/image.jpg" alt="Sample Image" style="width: 100px; height: auto;"></td>
-					<td>Sample Title</td>
-					<td>Sample description goes here.</td>
-					<td><button type="button">Edit</button> <button type="button">Delete</button></td>
-				</tr>
-				<!-- Add more rows as needed -->
+					<?php foreach( $this->meta_fields_array as $k => $vlaue ):
+					get_post_meta( $post->ID, $vlaue['field_id'], true );?>
+					<td><input type="<?php echo $vlaue['field_type'];?>" id="<?php echo $vlaue['field_id'];?>" name="team_<?php echo $vlaue['field_id'];?>" value="<?php echo ( get_post_meta( $post->ID, 'team_'.$vlaue['field_id'], true ) ) != '' ? get_post_meta( $post->ID, 'team_'.$vlaue['field_id'], true ) : '';?>" placeholder="<?php echo $vlaue['placeholder'];?>" style="width: 100%;"></td>
+					<?php endforeach;?>
+					
+					<td style="text-align:center"><button type="remove_button"><span class="dashicons dashicons-trash"></span> Remove</button></td>
+				</tr>				
 			</tbody>
-		</table>';
+		</table>
+		<button type="add_button" style="margin-top:10px;"><span class="dashicons dashicons-insert"></span> Add Row</button>
+		<?php 
 	}
 
     public function ms_save_metabox( $post_id, $post ) {
