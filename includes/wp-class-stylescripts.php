@@ -14,8 +14,7 @@ class STYLESCRIPTS {
     );
 
     private array $frontend_style = array(
-        'frontend-sbs-plugin-style' => array( 'assets/frontend/css/frontend-style.css', array(), '0.01' ),
-        'frontend-sbs-plugin-custom-style' => array( 'assets/frontend/css/frontend-custom-style.css', array(), null ),
+        'frontend-sbs-plugin-style' => array( 'assets/frontend/css/frontend-style.css', array(), null ),
     );
 
     private array $frontend_script = array(
