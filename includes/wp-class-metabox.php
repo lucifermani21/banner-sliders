@@ -76,11 +76,12 @@ class METABOX{
 					<td style="width:25%"><input type="text" id="banner_title" name="banner_title" value="<?php echo esc_attr($title_id); ?>" placeholder="add banner title." style="width: 100%;" /></td>
 					<td style="width:50%">
 						<?php $content = $banner_desc;
-							$settings  = array( 
-								'media_buttons' => false,
-								'textarea_rows' => 4,
-							);
-							wp_editor( $content, 'banner_desc', $settings );?>
+						$banner_desc_id = 'banner_desc';
+						$settings  = array( 
+							'media_buttons' => false,
+							'textarea_rows' => 4,
+						);
+						wp_editor( $content, $banner_desc_id, $settings );?>
 					</td>
 					<td style="text-align:center">
 						<button type="button"><span class="dashicons dashicons-trash"></span> Remove</button>
@@ -88,7 +89,7 @@ class METABOX{
 				</tr>				
 			</tbody>
 		</table>
-		<button type="button" id="add-banner-row" class="button" style="margin-top:10px;"><span class="dashicons dashicons-insert"></span> Add Row</button>		
+		<button type="button" id="add-banner-row" style="margin-top:10px;"><span class="dashicons dashicons-insert"></span> Add Row</button>		
 		<?php 
 	}
 
