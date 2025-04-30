@@ -1,7 +1,7 @@
 <?php 
 /**
-* Plugin Name: Simple Slick Banner Slider
-* Description: WordPress Simple Slick Banner Slider for wordpress, easy to use with help of shortcodes.
+* Plugin Name: Simple Posts Banner Slider
+* Description: WordPress Simple Posts Banner Slider for wordpress, easy to use with help of shortcodes.
 * Version: 1.0.0
 * Author: Manpreet Singh
 **/
