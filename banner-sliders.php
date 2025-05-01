@@ -18,7 +18,7 @@ define( 'MS_SBS_EDITING__DIR', plugin_dir_path( __FILE__ ) );
 define( 'MS_SBS_PLUGIN', __FILE__ );
 define( 'MS_SBS_PLUGIN_BASENAME', plugin_basename( MS_SBS_PLUGIN ) );
 
-function wp_sbs_plugin_init(): void {
+function wp_dfbs_plugin_init(): void {
      include MS_SBS_DIR__NAME. '/class-loader.php';
 }
-add_action( 'plugins_loaded', 'wp_sbs_plugin_init' );
+add_action( 'plugins_loaded', 'wp_dfbs_plugin_init' );

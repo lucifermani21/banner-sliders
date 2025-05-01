@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     die;
 }
 
-class SETTINGS {
+class DFBS_SETTINGS {
 
     /**
      * @var string

@@ -4,7 +4,7 @@ if ( ! defined( constant_name: 'ABSPATH' ) ) {
     die;
 }
 
-class INPUTS {
+class DFBS_INPUTS {
 
     /**
      * @param string $label_for

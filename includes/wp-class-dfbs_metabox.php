@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     die;
 }
 
-class METABOX{
+class DFBS_METABOX{
 
     public function __construct(){
         if ( is_admin() ) {

@@ -2,7 +2,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class BNRSHORTCODE {
+class DFBS_SHORTCODE {
     
     var $post_id = '';
     var $meta_data = array();

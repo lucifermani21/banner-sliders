@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     die;
 }
 
-class STYLESCRIPTS {
+class DFBS_STYLESCRIPTS {
     
     private array $admin_style = array(
         'backend-sbs-plugin-style' => array( 'assets/backend/css/backend-style.css', array(), null ),

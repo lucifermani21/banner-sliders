@@ -1,5 +1,5 @@
-<?php $obj = new SETTINGS;
-$wp_input = new INPUTS;
+<?php $obj = new DFBS_SETTINGS;
+$wp_input = new DFBS_INPUTS;
 $page_slug = $obj->setting_page_slug;
 $section = $obj->sections;?>
 <div id="wp_banner_slider_plugin_custom_setting" class="wrap">
