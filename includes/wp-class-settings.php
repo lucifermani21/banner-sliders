@@ -30,7 +30,7 @@ class SETTINGS {
                         'field_options' 	=> !empty($this->wp_ms_get_post_type_used()) ? implode('|', $this->wp_ms_get_post_type_used()) : 'post|page',
                         'field_desc' 		=> 'Selct Pages or Post Types where you want to display slider.',
                         'field_placeholder'	=> '',
-                        'field_style'	    => '',
+                        'field_style'	    => 'margin-left: 10px;',
                     ),
                 ),
             ),

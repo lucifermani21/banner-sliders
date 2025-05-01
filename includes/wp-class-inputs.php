@@ -180,10 +180,12 @@ class INPUTS {
         $input_class = $input_class != '' ? $input_class : '';
         $input_style = $input_style != '' ? $input_style : '';
         $html = '';
+        $html .= '<div class="my_checkbox">';
         foreach( $input_options as $checkbox_option ):
         $html .= '<input type="'.$input_type.'" id="'.$input_id.'" name="'.$input_id.'[]" value="'.trim( $checkbox_option, ' ' ).'" '.( in_array( $checkbox_option, (array)$input_value ) ? 'checked' : '' ).' class="'.$input_class.'" style="'.$input_style.'" >';
-        $html .= '<label for="'.$input_id.'">'.trim( $checkbox_option, ' ' ).'</label><br>';
+        $html .= '<label for="'.$input_id.'">'.trim( $checkbox_option, ' ' ).'</label>';
         endforeach;
+        $html .= '</div>';
         echo $html;
     }
 

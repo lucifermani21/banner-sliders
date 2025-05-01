@@ -25,7 +25,7 @@ $section = $obj->sections;?>
                                 <?php elseif( $fields_val['field_type'] == 'radio' ):?>
                                     <?php $wp_input->wp_input_radio( $fields_val['field_id'], $fields_val['field_type'], $fields_val['field_id'], $fields_val['field_options'], $my_option, '', '' );?>
                                 <?php elseif( $fields_val['field_type'] == 'checkbox' ):?>
-                                    <?php $wp_input->wp_input_checkbox( $fields_val['field_id'], $fields_val['field_type'], $fields_val['field_id'], $fields_val['field_options'], $my_option, '', '' );?>
+                                    <?php $wp_input->wp_input_checkbox( $fields_val['field_id'], $fields_val['field_type'], $fields_val['field_id'], $fields_val['field_options'], $my_option, '', $fields_val['field_style'] );?>
                                 <?php elseif( $fields_val['field_type'] == 'select' ):?>
                                     <?php $wp_input->wp_input_select( $fields_val['field_id'], $fields_val['field_type'], $fields_val['field_id'], $fields_val['field_options'], $my_option, '', '' );?>
                                 <?php elseif( $fields_val['field_type'] == 'number' ):?>
