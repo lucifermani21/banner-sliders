@@ -19,7 +19,7 @@ class BNRSHORTCODE {
 		if( file_exists( $theme_file ) ){
 			include( $theme_file );
         } else {
-            include_once( MS_SBS_DIR__NAME . '/snippets/wp-bnrshortcode.php' );
+            include_once( MS_SBS_DIR__NAME . '/templates/wp-bnrshortcode.php' );
 		}  
         return ob_get_clean();
     }
