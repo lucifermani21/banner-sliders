@@ -2,6 +2,7 @@
 /**
 * Plugin Name: Dynamic Featured Banner Slider
 * Description: WordPress Dynamic Featured Banner Slider for wordpress, easy to use with help of shortcodes.
+* Plugin URI: https://github.com/lucifermani21/banner-sliders.git
 * Version: 1.0.0
 * Author: Manpreet Singh
 **/
