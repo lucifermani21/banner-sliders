@@ -27,7 +27,7 @@ class SETTINGS {
                         'field_name' 		=> 'Select Post Types for to display slider:',
                         'field_id' 			=> 'slider_post_type',
                         'field_type' 		=> 'checkbox',
-                        'field_options' 	=> !empty($this->ms_get_post_type_used()) ? implode('|', $this->ms_get_post_type_used()) : 'post|page',
+                        'field_options' 	=> !empty($this->wp_ms_get_post_type_used()) ? implode('|', $this->wp_ms_get_post_type_used()) : 'post|page',
                         'field_desc' 		=> 'Selct Pages or Post Types where you want to display slider.',
                         'field_placeholder'	=> '',
                         'field_style'	    => '',
@@ -66,6 +66,7 @@ class SETTINGS {
                 ),
             ),
         );
+        add_filter( 'plugin_action_links', array( $this, 'wp_banner_slider_custom_add_action_plugin' ), 10, 2 );
         add_action( 'admin_menu', array( $this, 'wp_banner_slider_admin_setting_page' ) );
         add_action( 'admin_init', array( $this, 'wp_banner_slider_admin_plugin_register_setting' ) );
     }
@@ -103,9 +104,18 @@ class SETTINGS {
         include( MS_SBS_EDITING__DIR.'snippets/wp-slider-settings.php' );
     }
 
-    private function ms_get_post_type_used(){
+    private function wp_ms_get_post_type_used(){
 		global $wpdb;    
 		$new_post_types = $wpdb->get_col( "SELECT DISTINCT post_type FROM {$wpdb->posts} WHERE post_type NOT IN ('attachment', 'revision', 'nav_menu_item', 'custom_css', 'acf-field', 'acf-field-group', 'wpcf7_contact_form')" );
 		return (Array)$new_post_types;
+	}
+
+    public function wp_banner_slider_custom_add_action_plugin( $plugin_link, $plugin_file ){
+		if ( $plugin_file != MS_SBS_PLUGIN_BASENAME ) {
+			return $plugin_link;
+		}			
+		$settings_link = sprintf( __( '<a href="%s" target="_blank">Settings</a>', 'ms-banner-slider' ), esc_url( admin_url( "options-general.php?page=wp-slider-banner-setting" ) ) );;
+		array_unshift( $plugin_link, $settings_link );
+		return $plugin_link;
 	}
 }
