@@ -13,8 +13,8 @@ class BNRSHORTCODE {
     
     public function wp_ms_dynamic_banner_slider( $atts ) { 
         $this->post_id = get_the_ID();
-        $this->meta_data = get_post_meta($this->post_id, 'wp_banner_slider_repeatable_data', true);              
-        ob_start();       
+        $this->meta_data = get_post_meta( $this->post_id, 'wp_banner_slider_repeatable_data', true );
+        ob_start();
         $theme_file = get_template_directory().'/dynamic_banner_slider/wp-bnrshortcode.php';
 		if( file_exists( $theme_file ) ){
 			include( $theme_file );
@@ -23,4 +23,5 @@ class BNRSHORTCODE {
 		}  
         return ob_get_clean();
     }
+
 }
