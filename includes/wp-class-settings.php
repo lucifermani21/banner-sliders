@@ -9,7 +9,7 @@ class SETTINGS {
     /**
      * @var string
      */
-    private string $setting_page_name = 'Banner Settings';
+    private string $setting_page_name = 'Slider Settings';
 
     /**
      * @var string

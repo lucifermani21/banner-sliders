@@ -3,7 +3,7 @@ $wp_input = new INPUTS;
 $page_slug = $obj->setting_page_slug;
 $section = $obj->sections;?>
 <div id="wp_banner_slider_plugin_custom_setting" class="wrap">
-    <h1><?php echo __( 'Theme Custom Settings', '' );?></h1>
+    <h1><?php echo __( 'Theme Slider Settings', '' );?></h1>
     <hr/>
     <form method="post" action="options.php" enctype="multipart/form-data">
         <?php settings_fields( $page_slug );
