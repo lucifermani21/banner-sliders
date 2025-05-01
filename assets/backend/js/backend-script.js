@@ -64,9 +64,8 @@ jQuery(document).ready(function($) {
         file_frame.on('select', function() {
             var attachment = file_frame.state().get('selection').first().toJSON();
             $imageId.val(attachment.id);
-            $imagePreview.html('<img src="' + attachment.url + '" style="max-width:150px; height: auto;">');
+            $imagePreview.html('<img src="' + attachment.url + '" style="max-width:120px; height: auto;">');
         });
-        
         file_frame.open();
     });
     

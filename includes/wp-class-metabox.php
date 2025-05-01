@@ -10,7 +10,7 @@ class METABOX{
         if ( is_admin() ) {
 			add_action( 'load-post.php',     array( $this, 'ms_init_metabox' ) );
 			add_action( 'load-post-new.php', array( $this, 'ms_init_metabox' ) );
-		}
+		}		
     }
 
     public function ms_init_metabox() {
@@ -18,19 +18,19 @@ class METABOX{
 		add_action( 'save_post',      array( $this, 'ms_save_metabox' ), 10, 2 );
 	}
 
-    public function ms_add_metabox() {
+	public function ms_add_metabox() {
+		$show_post_types = get_option( 'slider_post_type' );
 		add_meta_box(
 			'ms-banner-slider-box',
 			__( 'Banner Images and Text', 'ms-banner-slider' ),
 			array( $this, 'ms_rendar_banner_slider_fucntion' ),
-			array( 'page', 'post' ),
+			( !empty($show_post_types) ? $show_post_types : array('post', 'page') ),
 			'normal',
 			'high'
 		);
 	}
 
     public function ms_rendar_banner_slider_fucntion( $post ) {		
-		
 		$meta_data = get_post_meta($post->ID, 'wp_banner_slider_repeatable_data', true);
     	$fields = !empty($meta_data) ? $meta_data : array( array('banner_image' => '', 'banner_title' => '', 'banner_description' => '' ) );
 		wp_nonce_field('wp_banner_slider_repeatable_data_nonce', 'wp_banner_slider_repeatable_data_nonce');
@@ -48,10 +48,10 @@ class METABOX{
 				<?php foreach ($fields as $index => $field):
 				$image_url = !empty($field['banner_image']) ? wp_get_attachment_url($field['banner_image']) : '';?>
 				<tr class="repeatable-field-group" data-index="<?php echo $index; ?>" >
-					<td style="width:20%;text-align:center">
+					<td style="width:25%;text-align:center">
 						<div class="image-preview">
 							<?php if ($image_url): ?>
-							<img src="<?php echo esc_url($image_url); ?>" style="max-width:150px; height: auto;">
+							<img src="<?php echo esc_url($image_url); ?>" style="max-width:120px; height: auto;">
 							<?php endif; ?>
 						</div>
 						<input type="hidden" name="wp_banner_slider_repeatable_data[<?php echo $index; ?>][banner_image]" value="<?php echo esc_attr($field['banner_image']); ?>" class="image-id" />
@@ -59,10 +59,10 @@ class METABOX{
 						<button type="button" class="remove-image-button button">Remove Image</button>
 					</td>
 					<td style="width:20%">
-						<input type="text" name="wp_banner_slider_repeatable_data[<?php echo $index; ?>][banner_title]" value="<?php echo esc_attr($field['banner_title']); ?>"  style="width: 100%;" />
+						<input type="text" name="wp_banner_slider_repeatable_data[<?php echo $index; ?>][banner_title]" value="<?php echo esc_attr($field['banner_title']); ?>" placeholder="Add image title here..." style="width: 100%;" />
 					</td>
 					<td style="width:50%">
-						<textarea name="wp_banner_slider_repeatable_data[<?php echo $index; ?>][banner_description]" style="width: 100%;"><?php echo esc_textarea($field['banner_description']); ?></textarea>
+						<textarea name="wp_banner_slider_repeatable_data[<?php echo $index; ?>][banner_description]" placeholder="Add image description here..." style="width: 100%;height:100px;"><?php echo esc_textarea($field['banner_description']); ?></textarea>
 					</td>
 					<td style="text-align:center">
 						<button type="button" class="remove-field-group button"><span class="dashicons dashicons-trash"></span> Remove</bu>
@@ -103,5 +103,4 @@ class METABOX{
 			delete_post_meta($post_id, 'wp_banner_slider_repeatable_data');
 		}
 	}
-
 }

@@ -171,7 +171,7 @@ class INPUTS {
      * 
      * @return void
      */
-    public function wp_input_checkbox( string $input_id, string $input_type, string $input_name, array|string $input_options, string $input_value, string $input_class, string $input_style ): void {
+    public function wp_input_checkbox( string $input_id, string $input_type, string $input_name, array|string $input_options, array|string $input_value, string $input_class, string $input_style ): void {
         $input_id = $input_id != '' ? $input_id : '';
         $input_type = $input_type != '' ? $input_type : 'checkbox';
         $input_name = $input_name != '' ? $input_name : '';
@@ -198,7 +198,7 @@ class INPUTS {
      * 
      * @return void
      */
-    public function wp_input_radio( string $input_id, string $input_type, string $input_name, array|string $input_options, string $input_value, string $input_class, string $input_style ): void {
+    public function wp_input_radio( string $input_id, string $input_type, string $input_name, array|string $input_options, array|string $input_value, string $input_class, string $input_style ): void {
         $input_id = $input_id != '' ? $input_id : '';
         $input_type = $input_type != '' ? $input_type : 'radio';
         $input_name = $input_name != '' ? $input_name : '';
