@@ -24,7 +24,7 @@ class SETTINGS {
             array( 'section_title' => 'Display Banner section:',
                 'section_fields' => array(
                     array(
-                        'field_name' 		=> 'Select Post Types for to display slider:',
+                        'field_name' 		=> 'Select Post Types:',
                         'field_id' 			=> 'slider_post_type',
                         'field_type' 		=> 'checkbox',
                         'field_options' 	=> !empty($this->wp_ms_get_post_type_used()) ? implode('|', $this->wp_ms_get_post_type_used()) : 'post|page',
@@ -35,7 +35,7 @@ class SETTINGS {
                 ),
             ),
             /* Accodion Text size Setting */
-            array( 'section_title' => 'Banner Slider:',
+            /*array( 'section_title' => 'Banner Slider:',
                 'section_fields' => array(
                     array(
                         'field_name' 		=> 'Banner Image Height',
@@ -64,7 +64,7 @@ class SETTINGS {
                         'field_style'	    => '',
                     ),
                 ),
-            ),
+            ),*/
         );
         add_filter( 'plugin_action_links', array( $this, 'wp_banner_slider_custom_add_action_plugin' ), 10, 2 );
         add_action( 'admin_menu', array( $this, 'wp_banner_slider_admin_setting_page' ) );

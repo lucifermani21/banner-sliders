@@ -9,7 +9,7 @@ $section = $obj->sections;?>
         <?php settings_fields( $page_slug );
         do_settings_sections( $page_slug );?>       
         <?php foreach( $section as $key => $section_val ):?>   
-        <h2><u><?php echo __( $section_val['section_title'] );?></u></h2>        
+        <h2><?php echo __( $section_val['section_title'] );?></h2>        
         <div id="<?php echo $section_val['section_title'];?>" class="wp-<?php echo $section_val['section_title'];?>" style="margin-bottom:1rem;" >
             <?php foreach( $section_val['section_fields'] as $i => $fields_val ):?>
                 <table style="width: 100%;text-align:left;">
@@ -46,6 +46,9 @@ $section = $obj->sections;?>
             <?php endforeach;?>
         </div>
         <?php endforeach;?>
+        <hr/>
+        <h2><?php echo __( '1. You can use <mark>[dynamic_slider]</mark> shortcode for the banner slider.' );?></h2>
+        <h2><?php echo __( '2. The Banner Slider template can be overridden by copying it to yourtheme/dynamic_banner_slider/wp-bnrshortcode.php.' );?></h2>
        	<?php submit_button( 'Update Settings' );?>
     </form>
 </div>
