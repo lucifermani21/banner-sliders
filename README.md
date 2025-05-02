@@ -1,2 +1,2 @@
 # banner-sliders
-WordPress Simple Slick Banner Slider for wordpress, easy to use with help of shortcodes.
+WordPress Dynamic Featured Banner Slider for wordpress, easy to use with help of shortcodes.
