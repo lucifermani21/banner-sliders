@@ -1,4 +1,3 @@
-2
 <?php $post_id = $this->post_id; $dynamic_slider = $this->meta_data;?>
 <div id="carouselExample<?php echo $post_id;?>" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
