@@ -31,7 +31,6 @@ class DFBS_SHORTCODE {
             }
         } else {
             foreach( $plguin_temp_files as $pfile ) {
-                var_dump( $layout_file_name  );
                 if( basename( $pfile ) === $layout_file_name ) {
                     include_once( MS_SBS_DIR__NAME . '/templates/'.$layout_file_name );
                 } else {
