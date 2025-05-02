@@ -48,7 +48,9 @@ $section = $obj->sections;?>
         <?php endforeach;?>
         <hr/>
         <h2><?php echo __( '1. You can use <mark>[dynamic_slider]</mark> shortcode for the banner slider.' );?></h2>
-        <h2><?php echo __( '2. The Banner Slider template can be overridden by copying it to yourtheme/dynamic_banner_slider/wp-bnrshortcode.php.' );?></h2>
+        <h2><?php echo __( '2. The Banner Slider template can be overridden by copying it to yourtheme/dynamic_banner_slider/dfbs-layout-<mark>{add layout number}</mark>.php' );?></h2>
+        <h3><?php echo __( 'Example: dfbs-layout-1.php, dfbs-layout-2.php' );?></h3>
+        <h2><?php echo __( '3. You can pass layout number to the short as <mark>[dynamic_slider layout="1"]</mark> shortcode for the banner slider.' );?></h2>
        	<?php submit_button( 'Update Settings' );?>
     </form>
 </div>
