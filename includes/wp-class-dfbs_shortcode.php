@@ -24,15 +24,16 @@ class DFBS_SHORTCODE {
         if( ( is_dir( get_template_directory().'/dynamic_banner_slider/' ) ) && file_exists( get_template_directory().'/dynamic_banner_slider/dfbs-layout-'.$layout.'.php' ) ) {
             foreach( $theme_temp_file as $tfile ) {
                 if( basename( $tfile ) === $layout_file_name ) {
-                    include_once( get_template_directory().'/dynamic_banner_slider/'.$layout_file_name.'.php' );
+                    include_once( get_template_directory().'/dynamic_banner_slider/'.$layout_file_name );
                 } else {
                     include_once( get_template_directory().'/dynamic_banner_slider/dfbs-layout-1.php' );
                 }
             }
         } else {
             foreach( $plguin_temp_files as $pfile ) {
+                var_dump( $layout_file_name  );
                 if( basename( $pfile ) === $layout_file_name ) {
-                    include_once( MS_SBS_DIR__NAME . '/templates/'.$layout_file_name.'.php' );
+                    include_once( MS_SBS_DIR__NAME . '/templates/'.$layout_file_name );
                 } else {
                     include_once( MS_SBS_DIR__NAME . '/templates/dfbs-layout-1.php' );
                 }
