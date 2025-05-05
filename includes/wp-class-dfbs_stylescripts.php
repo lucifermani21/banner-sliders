@@ -30,10 +30,10 @@ class DFBS_STYLESCRIPTS {
             return;
         }
 
-        $screen = get_current_screen();
-        if (!$screen || strpos($screen->id, 'my-plugin-slug') === false) {
-            return; // Only load on specific admin pages
-        }
+        // $screen = get_current_screen();
+        // if (!$screen || strpos($screen->id, 'my-plugin-slug') === false) {
+        //     return; // Only load on specific admin pages
+        // }
 
         $this->enqueue_assets($this->admin_style, $this->admin_script);
     }
