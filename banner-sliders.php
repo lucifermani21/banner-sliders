@@ -19,6 +19,11 @@ define( 'MS_SBS_PLUGIN', __FILE__ );
 define( 'MS_SBS_PLUGIN_BASENAME', plugin_basename( MS_SBS_PLUGIN ) );
 
 function wp_dfbs_plugin_init(): void {
-     include MS_SBS_DIR__NAME. '/class-loader.php';
+     $loader = MS_SBS_EDITING_DIR . 'class-loader.php';
+     if (file_exists($loader) {
+          require_once $loader;
+     } else {
+          wp_die(__('Plugin loader file is missing.', MS_SBS_TEXT_DOMAIN));
+     }
 }
 add_action( 'plugins_loaded', 'wp_dfbs_plugin_init' );
