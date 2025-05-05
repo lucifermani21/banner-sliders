@@ -12,34 +12,43 @@ class DFBS_SHORTCODE {
     }
     
     public function wp_ms_dynamic_banner_slider( $atts ) {
-        $html = '';
         $this->post_id = get_the_ID();
-        $this->meta_data = get_post_meta( $this->post_id, 'wp_banner_slider_repeatable_data', true );
-        $layout = isset( $atts['layout'] ) ? $atts['layout'] : '1';
+        $this->meta_data = get_post_meta($this->post_id, 'wp_banner_slider_repeatable_data', true);
+        $layout = isset($atts['layout']) ? sanitize_file_name($atts['layout']) : '1';
+        
+        // Determine the layout file name
+        $layout_file_name = 'dfbs-layout-' . $layout . '.php';
+        $default_file_name = 'dfbs-layout-1.php';
+        
+        // First check theme directory
+        $theme_dir = get_template_directory() . '/dynamic_banner_slider/';
+        $theme_file = $theme_dir . $layout_file_name;
+        $theme_default = $theme_dir . $default_file_name;
+        
+        // Then check plugin directory
+        $plugin_dir = MS_SBS_DIR__NAME . '/templates/';
+        $plugin_file = $plugin_dir . $layout_file_name;
+        $plugin_default = $plugin_dir . $default_file_name;
+        
         ob_start();
-        $plguin_temp_files = glob( MS_SBS_DIR__NAME . '/templates/dfbs-layout-*.php' );
-        $theme_temp_file = glob( get_template_directory().'/dynamic_banner_slider/dfbs-layout-*.php' );
-
-        $layout_file_name = 'dfbs-layout-'.$layout.'.php';
-        if( ( is_dir( get_template_directory().'/dynamic_banner_slider/' ) ) && file_exists( get_template_directory().'/dynamic_banner_slider/dfbs-layout-'.$layout.'.php' ) ) {
-            foreach( $theme_temp_file as $tfile ) {
-                if( basename( $tfile ) === $layout_file_name ) {
-                    include_once( get_template_directory().'/dynamic_banner_slider/'.$layout_file_name );
-                } else {
-                    include_once( get_template_directory().'/dynamic_banner_slider/dfbs-layout-1.php' );
-                }
+        
+        // Check theme files first
+        if (is_dir($theme_dir)) {
+            if (file_exists($theme_file)) {
+                include_once($theme_file);
+            } elseif (file_exists($theme_default)) {
+                include_once($theme_default);
             }
-        } else {
-            foreach( $plguin_temp_files as $pfile ) {
-                if( basename( $pfile ) === $layout_file_name ) {
-                    include_once( MS_SBS_DIR__NAME . '/templates/'.$layout_file_name );
-                } else {
-                    include_once( MS_SBS_DIR__NAME . '/templates/dfbs-layout-1.php' );
-                }
+        } 
+        // Fallback to plugin files
+        if (!ob_get_length()) {
+            if (file_exists($plugin_file)) {
+                include_once($plugin_file);
+            } elseif (file_exists($plugin_default)) {
+                include_once($plugin_default);
             }
-        }
-        $html .= ob_get_clean();
-        return $html;
+        }     
+        return ob_get_clean();
     }
 
 }
