@@ -77,13 +77,12 @@ class DFBS_METABOX{
 
     public function ms_save_metabox( $post_id, $post ) {
 
-		if (!isset($_POST['wp_banner_slider_repeatable_data_nonce']) || 
-			!wp_verify_nonce($_POST['wp_banner_slider_repeatable_data_nonce'], 'wp_banner_slider_repeatable_data_nonce')) {
+		if ( !isset($_POST['wp_banner_slider_repeatable_data_nonce']) || !wp_verify_nonce($_POST['wp_banner_slider_repeatable_data_nonce'], 'wp_banner_slider_repeatable_data_nonce') ) {
 			return;
 		}
     
     	// Check user permissions
-		if (!current_user_can('edit_post', $post_id)) {
+		if ( !current_user_can('edit_post', $post_id )) {
 			return;
 		}
 		
