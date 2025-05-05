@@ -1,64 +1,64 @@
-<?php 
-
-if ( ! defined( 'ABSPATH' ) ) {
+<?php
+if (!defined('ABSPATH')) {
     die;
 }
 
 class DFBS_STYLESCRIPTS {
-    
-    private array $admin_style = array(
-        'backend-sbs-plugin-style' => array( 'assets/backend/css/backend-style.css', array(), null ),
-    );
+    private array $admin_style = [
+        'backend-sbs-plugin-style' => ['assets/backend/css/backend-style.css', [], null],
+    ];
 
-    private array $admin_script = array(
-        'backend-sbs-plugin-script' => array( 'assets/backend/js/backend-script.js', array( 'jquery' ), null ),
-    );
+    private array $admin_script = [
+        'backend-sbs-plugin-script' => ['assets/backend/js/backend-script.js', ['jquery'], null],
+    ];
 
-    private array $frontend_style = array(
-        'frontend-sbs-plugin-style' => array( 'assets/frontend/css/frontend-style.css', array(), null ),
-    );
+    private array $frontend_style = [
+        'frontend-sbs-plugin-style' => ['assets/frontend/css/frontend-style.css', [], null],
+    ];
 
-    private array $frontend_script = array(
-        'frontend-sbs-plugin-script' => array( 'assets/frontend/js/frontend-script.js', array( 'jquery' ), null ),
-    );
+    private array $frontend_script = [
+        'frontend-sbs-plugin-script' => ['assets/frontend/js/frontend-script.js', ['jquery'], null],
+    ];
 
     public function __construct() {
-        add_action( 'admin_enqueue_scripts', array( $this, 'wp_sbs_script_style_admin' ) );
-        add_action( 'wp_enqueue_scripts', array( $this, 'wp_sbs_script_style_frontend' ) );
+        add_action('admin_enqueue_scripts', [$this, 'wp_sbs_script_style_admin']);
+        add_action('wp_enqueue_scripts', [$this, 'wp_sbs_script_style_frontend']);
     }
 
-    public function wp_sbs_script_style_admin(): void{
-        $file_url = MS_SBS_EDITING__URL;
-        $file_dir = MS_SBS_EDITING__DIR;
-        $current_page = get_current_screen();
-        if( $current_page->base != '' ){
-            foreach( $this->admin_style as $key => $value ) {
-                $version = ( $value[2] != null ) ? $value[2] : filemtime( $file_dir.$value[0] ); 
-                wp_register_style( $key, $file_url.$value[0], $value[1], $version );
-                wp_enqueue_style( $key );
-            }
-            
-            foreach( $this->admin_script as $key => $value ) {
-                $version = ( $value[2] != null ) ? $value[2] : filemtime( $file_dir.$value[0] ); 
-                wp_register_script( $key, $file_url.$value[0], $value[1], $version );
-                wp_enqueue_script( $key );
-            }
+    public function wp_sbs_script_style_admin(): void {
+        if (!defined('MS_SBS_EDITING__URL') || !defined('MS_SBS_EDITING__DIR')) {
+            return;
         }
+
+        $screen = get_current_screen();
+        if (!$screen || strpos($screen->id, 'my-plugin-slug') === false) {
+            return; // Only load on specific admin pages
+        }
+
+        $this->enqueue_assets($this->admin_style, $this->admin_script);
     }
 
     public function wp_sbs_script_style_frontend(): void {
-        $file_url = MS_SBS_EDITING__URL;
-        $file_dir = MS_SBS_EDITING__DIR;
-        foreach( $this->frontend_style as $key => $value ) {
-            $version = ( $value[2] != null ) ? $value[2] : filemtime( $file_dir.$value[0] ); 
-            wp_register_style( $key, $file_url.$value[0], $value[1], $version );
-            wp_enqueue_style( $key );
+        if (!defined('MS_SBS_EDITING__URL') || !defined('MS_SBS_EDITING__DIR')) {
+            return;
         }
-        
-        foreach( $this->frontend_script as $key => $value ) {
-            $version = ( $value[2] != null ) ? $value[2] : filemtime( $file_dir.$value[0] ); 
-            wp_register_script( $key, $file_url.$value[0], $value[1], $version );
-            wp_enqueue_script( $key );
+
+        $this->enqueue_assets($this->frontend_style, $this->frontend_script);
+    }
+
+    private function enqueue_assets(array $styles, array $scripts): void {
+        foreach ($styles as $key => $value) {
+            $file_path = MS_SBS_EDITING__DIR . $value[0];
+            $version = $value[2] ?? (file_exists($file_path) ? filemtime($file_path) : null);
+            wp_register_style($key, MS_SBS_EDITING__URL . $value[0], $value[1], $version);
+            wp_enqueue_style($key);
         }
-    }    
+
+        foreach ($scripts as $key => $value) {
+            $file_path = MS_SBS_EDITING__DIR . $value[0];
+            $version = $value[2] ?? (file_exists($file_path) ? filemtime($file_path) : null);
+            wp_register_script($key, MS_SBS_EDITING__URL . $value[0], $value[1], $version, true);
+            wp_enqueue_script($key);
+        }
+    }
 }
