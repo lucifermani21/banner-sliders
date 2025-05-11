@@ -27,27 +27,17 @@ class DFBS_SHORTCODE {
         
         // Then check plugin directory
         $plugin_dir = MS_SBS_DIR__NAME . '/templates/';
-        $plugin_file = $plugin_dir . $layout_file_name;
+        //$plugin_file = $plugin_dir . $layout_file_name;
         $plugin_default = $plugin_dir . $default_file_name;
         
         ob_start();
         
         // Check theme files first
-        if (is_dir($theme_dir)) {
-            if (file_exists($theme_file)) {
-                include_once($theme_file);
-            } elseif (file_exists($theme_default)) {
-                include_once($theme_default);
-            }
-        } 
-        // Fallback to plugin files
-        if (!ob_get_length()) {
-            if (file_exists($plugin_file)) {
-                include_once($plugin_file);
-            } elseif (file_exists($plugin_default)) {
+        if ( ( is_dir($theme_dir) == true ) && ( file_exists($theme_file) == true ) ) {
+            include_once($theme_file);
+        } else {
                 include_once($plugin_default);
-            }
-        }     
+        }
         return ob_get_clean();
     }
 
