@@ -36,7 +36,7 @@ class DFBS_SHORTCODE {
         if ( ( is_dir($theme_dir) == true ) && ( file_exists($theme_file) == true ) ) {
             include_once($theme_file);
         } else {
-                include_once($plugin_default);
+            include_once($plugin_default);
         }
         return ob_get_clean();
     }
