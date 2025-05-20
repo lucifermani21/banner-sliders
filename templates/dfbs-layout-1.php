@@ -1,4 +1,5 @@
 <?php $post_id = $this->post_id; $dynamic_slider = $this->meta_data;?>
+<?php if( !empty( $dynamic_slider ) ):?>
 <div id="carouselExample<?php echo $post_id;?>" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <?php $i = 1;
@@ -24,3 +25,4 @@
     </button>
     <?php endif;?>
 </div>
+<?php endif;?>
